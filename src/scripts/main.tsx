@@ -1,5 +1,5 @@
 import { render } from "preact";
-import { PopUp } from "./popUp";
+import { PopUp } from "./chromeExtension/popUp";
 chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     chrome.scripting.executeScript({
         target: { tabId: tabs[0].id as number },
