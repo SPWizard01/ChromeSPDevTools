@@ -3,6 +3,7 @@ dist
 typings/globals/
 !typings/globals/sharepoint/
 *.pem
+!wpcert.pem
 temp
 .tmp
 .sass-cache
