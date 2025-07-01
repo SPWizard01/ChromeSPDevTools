@@ -1,8 +1,8 @@
 import {
     DetailsList, DetailsListLayoutMode,
     IColumn, SelectionMode,
-} from "office-ui-fabric-react/lib/DetailsList";
-import { Icon } from "office-ui-fabric-react/lib/Icon";
+} from "@fluentui/react";
+import { Icon } from "@fluentui/react";
 import * as React from "react";
 import { IResult } from "../interfaces/spSearchInterfaces";
 

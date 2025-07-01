@@ -1,14 +1,14 @@
-import { MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
-import { ActionCreator, ActionCreatorsMapObject, Dispatch } from "redux";
+import { MessageBarType } from "@fluentui/react";
+import type { ActionCreator, ActionCreatorsMapObject, Dispatch } from "redux";
 import SpSiteContentApi from "../api/spSiteContentApi";
 import { Favourites } from "../helpers/favourites"
-import {
+import type {
     IAllContentAndMessage,
     ISiteContent,
     ISpSiteContentActionCreatorsMapObject
 } from "../interfaces/spSiteContentInterfaces";
 import { ActionFactory } from "./../../common/actionFactory";
-import { IAction, IMessageData } from "./../../common/interfaces";
+import type { IAction, IMessageData } from "./../../common/interfaces";
 import { ActionsId as actions, SpSiteContentConstants as constants } from "./../constants/spSiteContentConstants";
 
 const api: SpSiteContentApi = new SpSiteContentApi();

@@ -1,10 +1,11 @@
+import { Image } from "@fluentui/react";
 import { constants } from "../actions/common/constants";
 import type { ISharePointSiteInfo } from "../actions/common/interfaces";
+import { spoRuntime } from "./runtimeStore";
 
 interface IActionItemProps {
     item: any;
     stylesUrl: string;
-    spInfo: ISharePointSiteInfo;
 }
 
 export function ActionItem(props: IActionItemProps) {
@@ -39,7 +40,7 @@ export function ActionItem(props: IActionItemProps) {
                         constants.HTML_TAG_SCRIPT
                     }");
                     spInfo.text = 'var spInfo = ${JSON.stringify(
-                        props.spInfo
+                        spoRuntime.value
                     )};';
                     spInfo.id = "${constants.SP_INFO_TAG_ID}";
                     head.appendChild(spInfo);
@@ -54,15 +55,15 @@ export function ActionItem(props: IActionItemProps) {
                 script.parentNode.removeChild
             })("${props.item.scriptUrl}", "${props.stylesUrl}");`;
         chrome.tabs.query({ active: true, currentWindow: true }, (tab) => {
-            chrome.tabs.executeScript(
-                tab[0].id,
-                {
-                    code: codeStr,
-                },
-                () => {
-                    window.close();
-                }
-            );
+            // chrome.tabs.executeScript(
+            //     tab[0].id,
+            //     {
+            //         code: codeStr,
+            //     },
+            //     () => {
+            //         window.close();
+            //     }
+            // );
         });
 
         return false;
@@ -73,7 +74,7 @@ export function ActionItem(props: IActionItemProps) {
             className="ms-Button ms-Button--compound action-btn"
             onClick={onItemClick}
         >
-            <img alt={"Nothing"} src={props.item.image} />
+            <Image height={64} alt={"Nothing"} src={props.item.image} />
             <div>
                 <span className="ms-font-m ms-fontColor-themePrimary ms-fontWeight-regular">
                     {props.item.title}

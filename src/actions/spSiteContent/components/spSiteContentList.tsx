@@ -1,4 +1,4 @@
-import { List } from "office-ui-fabric-react/lib/List";
+import { List } from "@fluentui/react";
 import * as React from "react";
 import { StatelessComponent } from "react";
 import { ISiteContent } from "../interfaces/spSiteContentInterfaces";

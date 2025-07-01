@@ -1,14 +1,14 @@
-import { BuildConfig } from "bun";
+import type { BuildConfig } from "bun";
 import { styleLoader } from "bun-style-plugin";
 import { dynamicPathPlugin } from "bun-dynamic-path";
 
 export const buildConfig: BuildConfig = {
-  entrypoints: ["src/scripts/actions/spCustomActions/app.tsx"],
+  entrypoints: ["src/js/main.tsx"],
   sourcemap: "linked",
   outdir: "dist",
-  splitting: false,
+  splitting: true,
   naming: {
-    asset: "assets/[ext]/[name].[ext]",
+    asset: "assets/[name].[ext]",
     chunk: "js/chunk-[name]-[hash].[ext]",
     entry: "js/[name].[ext]",
   },

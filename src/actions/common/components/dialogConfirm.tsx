@@ -1,5 +1,5 @@
-import { Button, ButtonType } from "office-ui-fabric-react/lib/Button";
-import { Dialog, DialogFooter, DialogType } from "office-ui-fabric-react/lib/Dialog";
+import { Button, ButtonType } from "@fluentui/react";
+import { Dialog, DialogFooter, DialogType } from "@fluentui/react";
 import * as React from "react";
 import { constants } from "../constants";
 

@@ -1,4 +1,4 @@
-import { TextField } from "office-ui-fabric-react/lib/TextField";
+import { TextField } from "@fluentui/react";
 import * as React from "react";
 import { IProperty } from "../interfaces/spPropertyBagInterfaces";
 import { FavouriteButton } from "./../../common/components/favouriteButton";

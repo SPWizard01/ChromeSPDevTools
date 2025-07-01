@@ -1,6 +1,5 @@
 
-import { TextField } from "office-ui-fabric-react/lib/TextField";
-import * as React from "react";
+import { TextField } from "@fluentui/react";
 
 interface ISpCustomActionsItemInputProps {
     label: string;

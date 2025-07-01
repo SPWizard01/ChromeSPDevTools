@@ -1,5 +1,5 @@
 
-import { IAction } from "./../common/interfaces";
+import type { IAction } from "./../common/interfaces";
 
 export const ActionFactory = <T>(typeId: string) => {
     return (value: T): IAction<T> => {

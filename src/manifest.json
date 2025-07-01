@@ -1,8 +1,8 @@
 {
     "action": {
         "default_icon": {
-            "16": "images/sp_dev_tool_logo_16.png",
-            "32": "images/sp_dev_tool_logo_32.png"
+            "16": "assets/sp_dev_tool_logo_16.png",
+            "32": "assets/sp_dev_tool_logo_32.png"
         },
         "default_popup": "index.html",
         "default_title": "SP Editor"
@@ -13,12 +13,12 @@
     "manifest_version": 3,
     "description": "Chrome SP Dev Tools",
     "icons": {
-        "16": "images/sp_dev_tool_logo_16.png",
-        "19": "images/sp_dev_tool_logo_19.png",
-        "32": "images/sp_dev_tool_logo_32.png",
-        "64": "images/sp_dev_tool_logo_64.png",
-        "76": "images/sp_dev_tool_logo_76.png",
-        "128": "images/sp_dev_tool_logo_128.png"
+        "16": "assets/sp_dev_tool_logo_16.png",
+        "19": "assets/sp_dev_tool_logo_19.png",
+        "32": "assets/sp_dev_tool_logo_32.png",
+        "64": "assets/sp_dev_tool_logo_64.png",
+        "76": "assets/sp_dev_tool_logo_76.png",
+        "128": "assets/sp_dev_tool_logo_128.png"
     },
     "host_permissions": [ "\u003Call_urls>" ],
     "permissions": [

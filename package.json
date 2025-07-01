@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "description": "Google Chrome extension that opens a Property bag Modal dialog administration",
   "scripts": {
+    "build": "bun run bun.build.ts",
+    "serve": "bun run bun.serve.ts",
     "start": "set NODE_ENV=development && gulp generate-chrome-dev && node server.js",
     "bundleActions": "set NODE_ENV=production && webpack --progress --config ./webpack/webpack.config.actions.prod.js",
     "bundleChromeExtension": "set NODE_ENV=production && gulp build-chromeExt",
@@ -10,8 +12,10 @@
     "generateZip": "set NODE_ENV=production && gulp generate-chrome-package"
   },
   "dependencies": {
+    "@fluentui/react": "^8.123.0",
+    "@preact/signals": "^2.2.1",
+    "@reduxjs/toolkit": "^2.8.2",
     "axios": "^1.10.0",
-    "office-ui-fabric-react": "^7.204.1",
     "preact": "^10.26.9",
     "react": "npm:@preact/compat",
     "react-dom": "npm:@preact/compat",

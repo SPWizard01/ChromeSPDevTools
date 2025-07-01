@@ -1,4 +1,4 @@
-import { Checkbox } from "office-ui-fabric-react/lib/Checkbox";
+import { Checkbox } from "@fluentui/react";
 import * as React from "react";
 import { IAction } from "./../../common/interfaces";
 

@@ -1,5 +1,5 @@
-import { Button, ButtonType } from "office-ui-fabric-react/lib/Button";
-import { ContextualMenu, DirectionalHint } from "office-ui-fabric-react/lib/ContextualMenu";
+import { Button, ButtonType } from "@fluentui/react";
+import { ContextualMenu, DirectionalHint } from "@fluentui/react";
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { customActionLocationHelper } from "../helpers/customActionLocation";

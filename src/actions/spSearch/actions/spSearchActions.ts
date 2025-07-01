@@ -1,4 +1,4 @@
-import { MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
+import { MessageBarType } from "@fluentui/react";
 import { Dispatch } from "redux";
 import SpSearchApi from "../api/spSearchApi";
 import {

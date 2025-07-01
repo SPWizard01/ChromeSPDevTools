@@ -1,7 +1,7 @@
-import { Button, DefaultButton } from "office-ui-fabric-react/lib/";
-import { Icon } from "office-ui-fabric-react/lib/Icon";
-import { List } from "office-ui-fabric-react/lib/List";
-import { Spinner, SpinnerType } from "office-ui-fabric-react/lib/Spinner";
+import { Button, DefaultButton } from "@fluentui/react";
+import { Icon } from "@fluentui/react";
+import { List } from "@fluentui/react";
+import { Spinner, SpinnerType } from "@fluentui/react";
 import * as React from "react";
 import { IResult, ISpPropertyBagProps } from "../interfaces/spSearchInterfaces";
 import SpSearchMessage from "./spSearchMessage";

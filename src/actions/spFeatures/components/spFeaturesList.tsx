@@ -1,8 +1,8 @@
 import * as React from "react";
 
-import { FocusZone, FocusZoneDirection } from "office-ui-fabric-react/lib/FocusZone";
-import { Image } from "office-ui-fabric-react/lib/Image";
-import { List } from "office-ui-fabric-react/lib/List";
+import { FocusZone, FocusZoneDirection } from "@fluentui/react";
+import { Image } from "@fluentui/react";
+import { List } from "@fluentui/react";
 import { IFeature } from "../interfaces/spFeaturesInterfaces";
 import { constants } from "./../constants/constants";
 import SpFeaturesItem from "./spFeaturesItem";

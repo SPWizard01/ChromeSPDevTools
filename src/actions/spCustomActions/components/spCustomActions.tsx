@@ -1,5 +1,5 @@
-import { Button, ButtonType } from "office-ui-fabric-react/lib/Button";
-import { MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
+import { Button, ButtonType } from "@fluentui/react";
+import { MessageBarType } from "@fluentui/react";
 import * as React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";

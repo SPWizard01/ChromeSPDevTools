@@ -1,5 +1,4 @@
-import { Checkbox } from "office-ui-fabric-react/lib/Checkbox";
-import * as React from "react";
+import { Checkbox } from "@fluentui/react";
 
 interface ISpSearchSettingsCheckBoxProps {
     label: string;

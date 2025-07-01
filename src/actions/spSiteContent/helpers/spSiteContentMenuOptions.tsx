@@ -1,8 +1,6 @@
-import { IContextualMenuItem, IContextualMenuProps } from "office-ui-fabric-react/lib/ContextualMenu";
-import * as React from "react";
-import utils from "../../common/utils";
+import type { IContextualMenuItem, IContextualMenuProps } from "@fluentui/react";
 import { MenuOptionType } from "../constants/enums";
-import { ISiteContent } from "../interfaces/spSiteContentInterfaces";
+import type { ISiteContent } from "../interfaces/spSiteContentInterfaces";
 
 type PropertyFunction = (item: ISiteContent) => ICustomOption | ICustomItemOption | IActionOption | ILinkOption;
 type siteCtOption = ICustomOption | ICustomItemOption | IActionOption | ILinkOption | PropertyFunction;

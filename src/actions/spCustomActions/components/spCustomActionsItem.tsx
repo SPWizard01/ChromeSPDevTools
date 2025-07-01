@@ -1,6 +1,6 @@
 
-import { Button, ButtonType } from "office-ui-fabric-react/lib/Button";
-import { TextField } from "office-ui-fabric-react/lib/TextField";
+import { Button, ButtonType } from "@fluentui/react";
+import { TextField } from "@fluentui/react";
 import * as React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators, Dispatch } from "redux";

@@ -1,5 +1,5 @@
-import { Button as ButtonUIF, ButtonType } from "office-ui-fabric-react/lib/Button";
-import { TextField } from "office-ui-fabric-react/lib/TextField";
+import { Button as ButtonUIF, ButtonType } from "@fluentui/react";
+import { TextField } from "@fluentui/react";
 import * as React from "react";
 import { IProperty } from "../interfaces/spPropertyBagInterfaces";
 import { constants } from "./../constants/constants";

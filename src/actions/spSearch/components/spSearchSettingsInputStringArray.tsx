@@ -1,5 +1,4 @@
-import * as React from "react";
-import { TextField } from "office-ui-fabric-react/lib/TextField";
+import { TextField } from "@fluentui/react";
 
 interface ISpSearchSettingsInputStringArrayProps {
     label: string;

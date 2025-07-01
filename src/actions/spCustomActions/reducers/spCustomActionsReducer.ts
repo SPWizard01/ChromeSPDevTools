@@ -1,4 +1,4 @@
-import { MessageBarType } from "office-ui-fabric-react/lib/MessageBar";
+import { MessageBarType } from "@fluentui/react";
 import { ICustomAction, IInitialState } from "../interfaces/spCustomActionsInterfaces";
 import { initialState } from "../store/initialState";
 import { IAction, IMessageData } from "./../../common/interfaces";

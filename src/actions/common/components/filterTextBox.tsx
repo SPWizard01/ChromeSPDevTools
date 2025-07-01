@@ -1,4 +1,4 @@
-import { SearchBox } from "office-ui-fabric-react/lib/SearchBox";
+import { SearchBox } from "@fluentui/react";
 import * as React from "react";
 import { constants } from "../constants";
 import { IAction } from "../interfaces";

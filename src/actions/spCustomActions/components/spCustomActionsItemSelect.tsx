@@ -1,5 +1,5 @@
 
-import { Dropdown, IDropdownOption } from "office-ui-fabric-react/lib/Dropdown";
+import { Dropdown, IDropdownOption } from "@fluentui/react";
 import * as React from "react";
 
 interface ISpCustomActionsItemSelectProps {

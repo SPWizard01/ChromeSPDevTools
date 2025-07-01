@@ -1,4 +1,4 @@
-import { List } from "office-ui-fabric-react/lib/List";
+import { List } from "@fluentui/react";
 import * as React from "react";
 import { ICustomAction } from "../interfaces/spCustomActionsInterfaces";
 import { CustomActionType } from "./../constants/enums";

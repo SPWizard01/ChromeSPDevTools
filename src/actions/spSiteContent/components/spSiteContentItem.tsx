@@ -1,4 +1,4 @@
-import { Image } from "office-ui-fabric-react/lib/Image";
+import { Image } from "@fluentui/react";
 import * as React from "react";
 import { ISiteContent } from "../interfaces/spSiteContentInterfaces";
 import { FavouriteButton } from "./../../common/components/favouriteButton";

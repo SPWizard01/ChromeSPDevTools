@@ -1,0 +1,11 @@
+import "../assets/sp_dev_tool_logo_16.png";
+import "../assets/sp_dev_tool_logo_19.png";
+import "../assets/sp_dev_tool_logo_32.png";
+import "../assets/sp_dev_tool_logo_64.png";
+import "../assets/sp_dev_tool_logo_76.png";
+import "../assets/sp_dev_tool_logo_128.png";
+import "../assets/search-64-blue.png";
+import "../assets/sp-bag-64-blue.png";
+import "../assets/content-management-64-blue.png";
+import "../assets/hammer-nailing-a-nail-in-a-wall-64-blue.png";
+import "../assets/switch-64-blue.png";

@@ -1,5 +1,5 @@
-import { ActionCreator, ActionCreatorsMapObject, Dispatch } from "redux";
-import { IAction, IMessageData } from "./../../common/interfaces";
+import type { ActionCreator, ActionCreatorsMapObject, Dispatch } from "redux";
+import type { IAction, IMessageData } from "./../../common/interfaces";
 
 export interface ISiteContent {
     id: string;

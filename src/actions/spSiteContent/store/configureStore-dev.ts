@@ -1,14 +1,18 @@
 
-// tslint:disable-next-line:no-reference
-/// <reference path="../../../../../typings/index.d.ts" />
 
-import { applyMiddleware, compose, createStore } from "redux";
-import * as inmmutable from "redux-immutable-state-invariant";
-import thunk from "redux-thunk";
+import { applyMiddleware, compose } from "redux";
+import { thunk } from "redux-thunk";
 import { rootReducer } from "../reducers/index";
+import { configureStore } from "@reduxjs/toolkit";
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
-export const configureStore = (initialState: any) => {
-    return createStore(rootReducer, initialState, composeEnhancers(applyMiddleware(thunk, inmmutable())));
+export const cfgStore = (initialState: any) => {
+    return configureStore({
+        reducer: rootReducer,
+        preloadedState: initialState,
+        middleware(getDefaultMiddleware) {
+            return composeEnhancers(applyMiddleware(thunk))
+        },
+    });
 };

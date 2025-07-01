@@ -1,4 +1,4 @@
-import { List } from "office-ui-fabric-react/lib/List";
+import { List } from "@fluentui/react";
 import * as React from "react";
 import { IProperty } from "../interfaces/spPropertyBagInterfaces";
 import { constants } from "./../constants/constants";

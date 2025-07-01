@@ -39,3 +39,8 @@ function convertBytes(bytes: number) {
   }
   return (bytes / Math.pow(1024, i)).toFixed(1) + " " + sizes[i];
 }
+const f = Bun.file("./src/manifest.json");
+await Bun.write("./dist/manifest.json", f);
+
+const idx = Bun.file("./src/index.html");
+await Bun.write("./dist/index.html", idx);
