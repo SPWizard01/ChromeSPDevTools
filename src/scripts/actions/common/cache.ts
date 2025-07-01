@@ -7,7 +7,7 @@ declare var spInfo: ISharePointSiteInfo;
 
 class Cache {
     private _keyPrefix: string = "spChromeDevTool_";
-    private _isSupportedStorage: boolean = null;
+    private _isSupportedStorage: boolean | null = null;
 
     public get isSupportedStorage(): boolean {
         if (this._isSupportedStorage === null) {

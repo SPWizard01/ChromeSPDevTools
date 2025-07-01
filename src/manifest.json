@@ -1,7 +1,16 @@
 {
+    "action": {
+        "default_icon": {
+            "16": "images/sp_dev_tool_logo_16.png",
+            "32": "images/sp_dev_tool_logo_32.png"
+        },
+        "default_popup": "index.html",
+        "default_title": "SP Editor"
+    },
+    "update_url": "https://clients2.google.com/service/update2/crx",
     "name": "Chrome SP Dev Tools",
-    "version": "1.6.1",
-    "manifest_version": 2,
+    "version": "2.0.0",
+    "manifest_version": 3,
     "description": "Chrome SP Dev Tools",
     "icons": {
         "16": "images/sp_dev_tool_logo_16.png",
@@ -11,21 +20,26 @@
         "76": "images/sp_dev_tool_logo_76.png",
         "128": "images/sp_dev_tool_logo_128.png"
     },
+    "host_permissions": [ "\u003Call_urls>" ],
     "permissions": [
         "tabs",
-        "http://*/*",
-        "https://*/*"
+        "activeTab",
+        "scripting",
+        "downloads"
     ],
-    "browser_action": {
-        "default_icon": {
-            "16": "images/sp_dev_tool_logo_16.png",
-            "19": "images/sp_dev_tool_logo_19.png",
-            "32": "images/sp_dev_tool_logo_32.png",
-            "64": "images/sp_dev_tool_logo_64.png",
-            "76": "images/sp_dev_tool_logo_76.png",
-            "128": "images/sp_dev_tool_logo_128.png"
-        },
-        "default_title": "Chrome SP Dev Tools",
-        "default_popup": "index.html"
-    }
+    "content_scripts": [
+
+    ],
+    "web_accessible_resources": [
+        {
+            "matches": [
+                "\u003Call_urls>"
+            ],
+            "resources": [
+                "scripts/popup.js",
+                "styles/bundle.css",
+                "scripts/spSiteCustomActions/app.js"
+            ]
+        }
+    ]
 }

@@ -1,6 +1,6 @@
 import { applyMiddleware, compose, createStore } from "redux";
-import * as inmmutable from "redux-immutable-state-invariant";
-import thunk from "redux-thunk";
+import inmmutable from "redux-immutable-state-invariant";
+import {thunk} from "redux-thunk";
 import { rootReducer } from "../reducers/index";
 import { initialState } from "../store/initialState";
 import { CustomActionType } from "./../constants/enums";

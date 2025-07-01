@@ -1,6 +1,5 @@
-import * as React from "react";
 import { constants } from "../actions/common/constants";
-import { ISharePointSiteInfo } from "../actions/common/interfaces";
+import type { ISharePointSiteInfo } from "../actions/common/interfaces";
 
 interface IActionItemProps {
     item: any;
@@ -8,7 +7,7 @@ interface IActionItemProps {
     spInfo: ISharePointSiteInfo;
 }
 
-const ActionItem: React.StatelessComponent<IActionItemProps> = (props: IActionItemProps) => {
+const ActionItem= (props: IActionItemProps) => {
     const onItemClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         event.preventDefault();
         const codeStr: string = `

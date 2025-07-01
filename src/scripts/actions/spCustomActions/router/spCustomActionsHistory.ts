@@ -1,5 +1,4 @@
 
-import { createMemoryHistory, useRouterHistory } from "react-router";
 class SpCustomActionsHistory{
 
     private _history: any;
@@ -8,7 +7,7 @@ class SpCustomActionsHistory{
     }
 
     constructor() {
-        this._history = useRouterHistory(createMemoryHistory)({ queryKey: false });
+     
     }
 }
 export const spCustomActionsHistory = new SpCustomActionsHistory();

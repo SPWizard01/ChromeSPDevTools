@@ -1,4 +1,4 @@
-@import "./node_modules/office-ui-fabric-react/dist/sass/Fabric";
+@import "office-ui-fabric-react/dist/sass/Fabric.scss";
 $focusedBorderColor: $ms-color-neutralSecondary;
 $bodyBackgroundColor: $ms-color-white;
 $bodyForegroundColor: $ms-color-neutralPrimary;
@@ -60,7 +60,7 @@ $dividerColor: $ms-color-neutralLight;
 }
 
 .ms-ListBasicSpChromeDevTool-itemContent {
-    @include margin-left(10px);
+    margin-left: 10px;
     overflow: hidden;
     flex-grow: 1;
     white-space: nowrap;
@@ -82,7 +82,7 @@ $dividerColor: $ms-color-neutralLight;
 
 .ms-ListBasicSpChromeDevTool-chevron {
     align-self: center;
-    @include margin-left(10px);
+    margin-left: 10px;
     color: $ms-color-neutralTertiary;
     font-size: $ms-font-size-l;
     flex-shrink: 0;
@@ -347,7 +347,7 @@ $dividerColor: $ms-color-neutralLight;
         margin-right: 10px;
     }
     .ms-ListBasicSpChromeDevTool-featureContent {
-        @include margin-left(10px);
+        margin-left: 10px;
         overflow: hidden;
         flex-grow: 1;
         overflow: hidden;

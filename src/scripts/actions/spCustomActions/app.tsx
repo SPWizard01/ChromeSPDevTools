@@ -1,16 +1,15 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
-import { IndexRoute, Redirect, Route, Router } from "react-router";
+import { Route, Router } from "react-router";
 import { AppBase } from "./../common/AppBase";
-import SpCustomModalWrapper from "./../common/components/spCustomModalWrapper";
+import { SpCustomModalWrapper } from "./../common/components/spCustomModalWrapper";
 import Utils from "./../common/utils";
 import SpCustomActions from "./components/spCustomActions";
 import SpCustomActionItemEdit from "./components/spCustomActionsItemEdit";
 import { CustomActionType } from "./constants/enums";
 import { spCustomActionsHistory } from "./router/spCustomActionsHistory";
 import { configureStore } from "./store/configureStore-dev";
-
+import jj from "history";
 export class App extends AppBase {
     private _componentsDivId: string;
     private _customActionType: CustomActionType;
@@ -31,27 +30,21 @@ export class App extends AppBase {
         const that = this;
         Utils.ensureSPObject().then(() => {
             const store = configureStore(this._customActionType);
-            const wrapper: React.StatelessComponent<{ children?: any }> = (props: { children?: any }) => {
-                return (
-                    <SpCustomModalWrapper onCloseClick={this.onCloseWrapperClick} modalDialogTitle={this.baseDivId}>
-                        <div className="action-container sp-customActions">
-                            {props.children}
-                        </div>
-                    </SpCustomModalWrapper>
-                );
-            };
-            ReactDOM.render(
-                <Provider store={store}>
-                    <Router history={spCustomActionsHistory.History}>
-                        <Route path="/" component={wrapper} >
-                            <IndexRoute component={SpCustomActions} />
-                            <Route path="newItem/:type" component={SpCustomActionItemEdit} />
-                            <Route path="item/:guid" component={SpCustomActionItemEdit} />
-                        </Route>
-                        <Redirect from="*" to="/" />
-                    </Router>
-                </Provider>
-                , document.getElementById(that.baseDivId));
+
+            const root = createRoot(document.getElementById(that._componentsDivId) as HTMLElement);
+            root.render(
+                <SpCustomModalWrapper onCloseClick={this.onCloseWrapperClick} modalDialogTitle={this.baseDivId}>
+                    <div className="action-container sp-customActions">
+                        <Provider store={store}>
+                            <Router history={jj.createHistory()}>
+                                <Route path="/" component={SpCustomActions} />
+                                <Route path="newItem/:type" component={SpCustomActionItemEdit} />
+                                <Route path="item/:guid" component={SpCustomActionItemEdit} />
+                            </Router>
+                        </Provider>
+                    </div>
+                </SpCustomModalWrapper >
+            );
         });
     }
 }

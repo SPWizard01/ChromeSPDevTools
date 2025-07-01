@@ -1,6 +1,6 @@
 
 interface Window {
-    [index:string] : any
+    // [index:string] : any
     SpPropertyBagObj: any;
     SpSiteContentObj: any;
     SpSiteCustomActionsObj: any;

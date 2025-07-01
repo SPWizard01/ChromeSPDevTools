@@ -1,7 +1,15 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
-import PopUp from "./popUp";
-
+import { render } from "preact";
+import { PopUp } from "./popUp";
+chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    chrome.scripting.executeScript({
+        target: { tabId: tabs[0].id as number },
+        func() {
+            alert("GG");
+        },
+    })
+});
 const manifestData = chrome.runtime.getManifest();
-
-ReactDOM.render(<PopUp currentVersion={manifestData.version}/>, document.getElementById("popUpContent"));
+const mp = document.getElementById("popUpContent");
+if (mp) {
+    render(<PopUp currentVersion={manifestData.version} />, mp);
+}

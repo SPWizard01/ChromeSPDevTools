@@ -6,10 +6,11 @@ interface ISpCustomModalWrapperProps {
     modalDialogTitle: string;
     modalWidth?: string;
     onCloseClick: any;
+    children?: React.ReactNode;
 }
-export default class SpCustomModalWrapper extends React.Component<ISpCustomModalWrapperProps, {}> {
-    constructor() {
-        super();
+export class SpCustomModalWrapper extends React.Component<ISpCustomModalWrapperProps, {}> {
+    constructor(props: ISpCustomModalWrapperProps) {
+        super(props);
         this.state = { isClosed: false };
         this.closeBtnClick = this.closeBtnClick.bind(this);
     }

@@ -1,9 +1,10 @@
 import { List } from "office-ui-fabric-react/lib/List";
 import { Spinner, SpinnerType } from "office-ui-fabric-react/lib/Spinner";
-import * as React from "react";
 import ActionItem from "./ActionItem";
 import "./styles/chromeExtePopUp.scss";
-import { ISharePointSiteInfo } from "../actions/common/interfaces";
+import type { ISharePointSiteInfo } from "../actions/common/interfaces";
+import { useState } from "preact/hooks";
+import { spChecker } from "./spChecker";
 
 interface IActionData {
     title: string;
@@ -20,61 +21,23 @@ interface IPopUpState {
     stylesUrl: string;
     isSp: boolean;
     loading: boolean;
-    sharePointInfo: ISharePointSiteInfo;
+    sharePointInfo: ISharePointSiteInfo | null;
 }
 
-export default class PopUp extends React.Component<IPopUpProps, IPopUpState> {
-    constructor() {
-        super();
-        this.state = {
-            actions: [],
-            stylesUrl: "",
-            loading: true,
-            isSp: false,
-            sharePointInfo: null
-        };
-        this.renderItem = this.renderItem.bind(this);
-        this.actions = this.actions.bind(this);
-    }
-    public render() {
-        if (this.state.loading) {
-            return this.loading();
-        } else if (!this.state.isSp) {
-            return this.notSpSite();
-        } else {
-            return this.actions();
-        }
-    }
-
-    public componentDidMount() {
-        this.checkIfSharePoint().then((isSpResponse: (boolean | ISharePointSiteInfo)) => {
-            if (isSpResponse) {
-                this.getActions(isSpResponse as ISharePointSiteInfo);
-            } else {
-                this.setState({ isSp: false, loading: false } as IPopUpState);
-            }
-        });
-    }
-    private actions() {
-        return (
-            <div className="container">
-                <span className="ms-font-xl ms-fontColor-themePrimary ms-fontWeight-semibold">Chrome SP Dev Tools</span>
-                <hr />
-                <List items={this.state.actions} onRenderCell={this.renderItem} renderedWindowsAhead={4} />
-                <div className="ms-font-mi ms-fontWeight-light tool-version" >
-                    <span>Version {this.props.currentVersion}</span>
-                </div>
-            </div>
-        );
-    }
-    private loading() {
+export function PopUp(props: IPopUpProps) {
+    const [actions, setActions] = useState([]);
+    const [stylesUrl, setStylesUrl] = useState("");
+    const [loading, setLoading] = useState(true);
+    const [isSp, setIsSp] = useState(false);
+    const [sharePointInfo, setSharePointInfo] = useState<ISharePointSiteInfo>();
+    if (loading) {
         return (
             <div className="container">
                 <Spinner type={SpinnerType.large} label="Making sure everything is in order..." />
             </div>
         );
     }
-    private notSpSite() {
+    if (!isSp) {
         return (
             <div className="container">
                 <span className="ms-font-xl ms-fontColor-themePrimary ms-fontWeight-semibold">
@@ -89,8 +52,22 @@ export default class PopUp extends React.Component<IPopUpProps, IPopUpState> {
             </div>
         );
     }
-    private getActions(spInfo: ISharePointSiteInfo) {
-        const that: any = this;
+
+
+
+    return (
+        <div className="container">
+            <span className="ms-font-xl ms-fontColor-themePrimary ms-fontWeight-semibold">Chrome SP Dev Tools</span>
+            <hr />
+            <List items={actions} onRenderCell={renderItem} renderedWindowsAhead={4} />
+            <div className="ms-font-mi ms-fontWeight-light tool-version" >
+                <span>Version {currentVersion}</span>
+            </div>
+        </div>
+    );
+
+
+    function getActions(spInfo: ISharePointSiteInfo) {
         const xobj: XMLHttpRequest = new XMLHttpRequest();
         xobj.overrideMimeType("application/json");
         xobj.open("GET", "data/actions.json", true);
@@ -109,53 +86,23 @@ export default class PopUp extends React.Component<IPopUpProps, IPopUpState> {
         xobj.send(null);
 
     }
-    private renderItem(item: IActionData, index: number) {
-        return <ActionItem item={item} key={index} stylesUrl={this.state.stylesUrl} spInfo={this.state.sharePointInfo} />;
+    function renderItem(item?: IActionData, index?: number) {
+        return <ActionItem item={item} key={index} stylesUrl={stylesUrl} spInfo={sharePointInfo} />;
     }
-    private checkIfSharePoint(): Promise<boolean> {
-        return new Promise((resolve, reject) => {
-            const codeStr: string = `(function () {
-                var href = window.location.href;
-                var lastIndex = href.lastIndexOf('/_layouts');
-                if (lastIndex === -1){
-                    lastIndex = href.lastIndexOf('/');
-                    var lastPath = href.substring(lastIndex);
-                    if(lastPath.lastIndexOf('.') === -1){
-                        lastIndex = href.length;
-                    }
+    function checkIfSharePoint() {
+        const { promise, resolve } = Promise.withResolvers<boolean>();
+        chrome.tabs.query({ active: true, currentWindow: true }, (tab) => {
+            chrome.scripting.executeScript({
+                target: { tabId: tab[0].id as number },
+                world: "MAIN",
+                func() {
+                    return spChecker()
                 }
-                var requestUrl = href.substring(0, lastIndex + 1);
-                if(!requestUrl.endsWith("/")){
-                    requestUrl += '/';
-                }
-                requestUrl += '_api/contextinfo';
-                var request = new XMLHttpRequest();
-                request.open("POST", requestUrl, false);
-                request.setRequestHeader("Accept", "application/json, text/javascript");
-                request.send(null);
-                var response;
-
-                if (request.status === 200) {
-                    response = request.responseText;
-                }
-                try{
-                    var data  = JSON.parse(response);
-                    if(data.FormDigestValue && data.WebFullUrl && data.SiteFullUrl){
-                        return { formDigestValue: data.FormDigestValue, webFullUrl: data.WebFullUrl,siteFullUrl: data.SiteFullUrl};
-                    }else{
-                        return false;
-                    }
-                } catch(a){
-                    return false;
-                }
-            })();`;
-            chrome.tabs.query({ active: true, currentWindow: true }, (tab) => {
-                chrome.tabs.executeScript(tab[0].id, {
-                    code: codeStr
-                }, (retValue) => {
-                    resolve(!!retValue && retValue[0]);
-                });
+            }, (retValue) => {
+                !!retValue && retValue[0];
             });
         });
+        return promise;
+
     }
 }
