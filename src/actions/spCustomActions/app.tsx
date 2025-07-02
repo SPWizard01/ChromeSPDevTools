@@ -6,14 +6,12 @@ import { SpCustomModalWrapper } from "./../common/components/spCustomModalWrappe
 import Utils from "./../common/utils";
 import SpCustomActions from "./components/spCustomActions";
 import SpCustomActionItemEdit from "./components/spCustomActionsItemEdit";
-import { CustomActionType } from "./constants/enums";
 import { spCustomActionsHistory } from "./router/spCustomActionsHistory";
-import { configureStore } from "./store/configureStore-dev";
-import jj from "history";
+import  { CustomActionLocation, type CustomActionLocationType } from "./constants/constants";
 export class App extends AppBase {
     private _componentsDivId: string;
-    private _customActionType: CustomActionType;
-    constructor(modalDialogName: string, componentsDivId: string, customActionType: CustomActionType) {
+    private _customActionType: CustomActionLocationType;
+    constructor(modalDialogName: string, componentsDivId: string, customActionType: CustomActionLocationType) {
         super(modalDialogName);
 
         this._componentsDivId = componentsDivId;
@@ -29,7 +27,7 @@ export class App extends AppBase {
     public show() {
         const that = this;
         Utils.ensureSPObject().then(() => {
-            const store = configureStore(this._customActionType);
+            const store = configInitialStore(this._customActionType);
 
             const root = createRoot(document.getElementById(that._componentsDivId) as HTMLElement);
             root.render(

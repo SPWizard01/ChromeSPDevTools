@@ -1,9 +1,9 @@
-import { IContextualMenuItem } from "@fluentui/react";
-import * as React from "react";
+import type { IContextualMenuItem } from "@fluentui/react";
 import { Link } from "react-router";
 import SpCustomActionsItemFormScriptLink from "../components/spCustomActionsItemFormScriptLink";
 import SpCustomActionsItemFormStandarMenu from "../components/spCustomActionsItemFormStandarMenu";
-import { ICustomAction } from "../interfaces/spCustomActionsInterfaces";
+import type { ICustomAction } from "../interfaces/spCustomActionsInterfaces";
+import type { JSX } from "preact";
 
 export interface ICustomActionType extends IContextualMenuItem {
     type: string;
@@ -104,9 +104,9 @@ class CustomActionLocationHelper {
             });
         }
 
-        return (filtered.length > 0) ? filtered[0].renderForm(item, onChange) : null;
+        return filtered[0]?.renderForm(item, onChange);
     }
-    public getLocationItem(item: ICustomAction): ILocationItem {
+    public getLocationItem(item: ICustomAction) {
         let filtered: ILocationItem[];
         if (item.location === "ScriptLink") {
             filtered = this._location.filter((location: ILocationItem) => {
@@ -122,20 +122,20 @@ class CustomActionLocationHelper {
             });
         }
 
-        return (filtered.length > 0) ? filtered[0] : null;
+        return filtered[0];
     }
 
-    public getLocationByKey(key: string): ILocationItem {
+    public getLocationByKey(key: string) {
         const filtered: ILocationItem[] = this._location.filter((location: ILocationItem) => {
             return location.key === key;
         });
 
-        return (filtered.length > 0) ? filtered[0] : null;
+        return filtered[0];
     }
 
-    public getSpLocationNameByType(type: string): string {
+    public getSpLocationNameByType(type: string) {
         const loc = this.getLocationByKey(type);
-        return (loc) ? loc.spLocationName : null;
+        return loc.spLocationName;
     }
 
     private _renderCharmMenuItem(item: ICustomActionType) {

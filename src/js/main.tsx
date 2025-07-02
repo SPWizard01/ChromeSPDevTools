@@ -3,6 +3,7 @@ import { PopUp } from "./popUp";
 import { spCheckerFetch } from "./spChecker";
 import { spoRuntime } from "./runtimeStore";
 import "./assetImports";
+import { App } from "./app";
 // await import("./styles.scss");
 // chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 //     chrome.scripting.executeScript({
@@ -33,7 +34,7 @@ chrome.tabs.query({ active: true, currentWindow: true }, (tab) => {
 });
 const mp = document.getElementById("app");
 if (mp) {
-    render(<PopUp currentVersion={manifestData.version} />, mp);
+    render(<App />, mp);
 } else {
     window.document.body.innerHTML = `error: popUpContent element not found`;
 }

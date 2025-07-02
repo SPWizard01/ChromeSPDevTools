@@ -5,7 +5,7 @@ import { ICustomAction, ISpCustomActionsActionCreatorsMapObject } from "../inter
 import { ActionFactory } from "./../../common/actionFactory";
 import { IAction, IMessageData } from "./../../common/interfaces";
 import { ActionsId as actions, constants } from "./../constants/constants";
-import { CustomActionType } from "./../constants/enums";
+import { CustomActionType } from "./../constants/constants";
 
 const api = new SpCustomActionsApi();
 

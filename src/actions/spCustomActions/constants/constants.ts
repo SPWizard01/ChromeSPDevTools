@@ -40,3 +40,9 @@ export const constants = {
     TEXTBOX_PREFIX: "spPropInput_",
     UNDEFINED_STRING: "undefined",
 };
+export const CustomActionLocation = {
+    Site: "Site",
+    Web: "Web",
+} as const;
+
+export type CustomActionLocationType = keyof typeof CustomActionLocation;

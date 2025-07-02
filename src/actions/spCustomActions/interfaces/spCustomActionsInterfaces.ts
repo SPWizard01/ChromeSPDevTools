@@ -1,7 +1,7 @@
 
-import { ActionCreator, ActionCreatorsMapObject, Dispatch } from "redux";
-import { IAction, IMessageData } from "./../../common/interfaces";
-import { CustomActionType } from "./../constants/enums";
+import type { ActionCreator, ActionCreatorsMapObject, Dispatch } from "redux";
+import type { IAction, IMessageData } from "./../../common/interfaces";
+import type { CustomActionLocationType } from "./../constants/constants";
 
 export interface ICustomAction {
     name: string;
@@ -25,19 +25,19 @@ export interface IInitialState {
     filterText: string;
     messageData: IMessageData;
     customActions: ICustomAction[];
-    customActionType: CustomActionType;
+    customActionType: CustomActionLocationType;
 }
 
 export interface ISpCustomActionsActionCreatorsMapObject extends ActionCreatorsMapObject {
-    createCustomAction: (customAction: ICustomAction, caType: CustomActionType) =>
+    createCustomAction: (customAction: ICustomAction, caType: CustomActionLocationType) =>
         (dispatch: Dispatch<IAction<ICustomAction>>) => Promise<void>;
-    updateCustomAction: (customAction: ICustomAction, caType: CustomActionType) =>
+    updateCustomAction: (customAction: ICustomAction, caType: CustomActionLocationType) =>
         (dispatch: Dispatch<IAction<ICustomAction>>) => Promise<void>;
-    deleteCustomAction: (customAction: ICustomAction, caType: CustomActionType) =>
+    deleteCustomAction: (customAction: ICustomAction, caType: CustomActionLocationType) =>
         (dispatch: Dispatch<IAction<ICustomAction>>) => Promise<void>;
-    getAllCustomActions: (caType: CustomActionType) =>
+    getAllCustomActions: (caType: CustomActionLocationType) =>
         (dispatch: Dispatch<IAction<ICustomAction[]>>) => Promise<void>;
-    checkUserPermissions: (permissionKing: SP.PermissionKind, caType: CustomActionType) =>
+    checkUserPermissions: (permissionKing: SP.PermissionKind, caType: CustomActionLocationType) =>
         (dispatch: Dispatch<IAction<ICustomAction[]>>) => Promise<void>;
     setFilterText: ActionCreator<IAction<string>>;
     setWorkingOnIt: ActionCreator<IAction<boolean>>;
@@ -55,7 +55,7 @@ export interface ISpCustomActionsProps {
     customActions: ICustomAction[];
     messageData: IMessageData;
     filterText: string;
-    customActionType: CustomActionType;
+    customActionType: CustomActionLocationType;
     actions: ISpCustomActionsActionCreatorsMapObject;
 }
 
@@ -65,7 +65,7 @@ export interface IMapStateToProps {
     isWorkingOnIt: boolean;
     messageData: IMessageData;
     filterText: string;
-    customActionType: CustomActionType;
+    customActionType: CustomActionLocationType;
 }
 export interface IMapStateToPropsState {
     spCustomActionsReducer: IInitialState;
@@ -77,5 +77,5 @@ export interface IMapStateToProps {
     isWorkingOnIt: boolean;
     messageData: IMessageData;
     filterText: string;
-    customActionType: CustomActionType;
+    customActionType: CustomActionLocationType;
 }

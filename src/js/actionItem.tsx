@@ -1,4 +1,4 @@
-import { Image } from "@fluentui/react";
+import { Image, StackItem, Stack, ImageFit, Text } from "@fluentui/react";
 import { constants } from "../actions/common/constants";
 import type { ISharePointSiteInfo } from "../actions/common/interfaces";
 import { spoRuntime } from "./runtimeStore";
@@ -69,20 +69,29 @@ export function ActionItem(props: IActionItemProps) {
         return false;
     };
     return (
-        <button
-            type={"button"}
-            className="ms-Button ms-Button--compound action-btn"
-            onClick={onItemClick}
-        >
-            <Image height={64} alt={"Nothing"} src={props.item.image} />
-            <div>
-                <span className="ms-font-m ms-fontColor-themePrimary ms-fontWeight-regular">
-                    {props.item.title}
-                </span>
-                <span className="ms-Button-description">
-                    {props.item.description}
-                </span>
-            </div>
-        </button>
+        <Stack horizontal verticalAlign="center" styles={{
+            root: {
+                ":hover": {
+                    backgroundColor: "#f3f2f1",
+                    cursor: "pointer",
+                }
+            }
+        }} onClick={()=> {alert("Clicked!");}}>
+            <StackItem>
+                <Image
+                    width={50}
+                    height={50}
+                    imageFit={ImageFit.centerContain}
+                    alt={"Nothing"}
+                    src={props.item.image}
+                />
+            </StackItem>
+            <StackItem>
+                <Stack tokens={{padding: 10}}>
+                    <Text>{props.item.title}</Text>
+                    <Text>{props.item.description}</Text>
+                </Stack>
+            </StackItem>
+        </Stack>
     );
 }

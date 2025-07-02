@@ -1,4 +1,10 @@
-import { List, Stack, ThemeProvider, type PartialTheme } from "@fluentui/react";
+import {
+    List,
+    Stack,
+    Text,
+    ThemeProvider,
+    type PartialTheme,
+} from "@fluentui/react";
 import { Spinner, SpinnerSize } from "@fluentui/react";
 import { ActionItem } from "./actionItem";
 import type { ISharePointSiteInfo } from "../actions/common/interfaces";
@@ -30,7 +36,6 @@ interface IPopUpState {
 }
 
 export function PopUp(props: IPopUpProps) {
-    const [actions, setActions] = useState(actionData.actions);
     const [stylesUrl, setStylesUrl] = useState("");
     const [loading, setLoading] = useState(true);
     const [isSp, setIsSp] = useState(false);
@@ -72,21 +77,21 @@ export function PopUp(props: IPopUpProps) {
     }
 
     return (
-        <ThemeProvider theme={lightTheme} className={"container"} style={{width: "300px"}}>
-            <span className="ms-font-xl ms-fontColor-themePrimary ms-fontWeight-semibold">
-                Chrome SP Dev Tools
-            </span>
+        <ThemeProvider
+            theme={lightTheme}
+            className={"container"}
+            style={{ width: "300px" }}
+        >
+            <Text>Chrome SP Dev Tools</Text>
             <hr />
             <Stack>
                 <List
-                    items={actions}
+                    items={actionData.actions}
                     onRenderCell={renderItem}
                     renderedWindowsAhead={4}
                 />
             </Stack>
-            <div className="ms-font-mi ms-fontWeight-light tool-version">
-                <span>Version {props.currentVersion}</span>
-            </div>
+            <Text>Version {props.currentVersion}</Text>
         </ThemeProvider>
     );
 
