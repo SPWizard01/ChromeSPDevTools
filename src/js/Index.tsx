@@ -11,6 +11,7 @@ import type { ISharePointSiteInfo } from "../actions/common/interfaces";
 import { useEffect, useState } from "preact/hooks";
 import { useSignalEffect } from "@preact/signals";
 import { actionData, spoRuntime } from "./runtimeStore";
+import { useLocation, useRoute } from "preact-iso";
 const lightTheme: PartialTheme = {
     semanticColors: {
         bodyBackground: "white",
@@ -21,7 +22,7 @@ interface IActionData {
     title: string;
     description: string;
     image: string;
-    scriptUrl: string;
+    location: string;
 }
 
 interface IPopUpProps {
@@ -35,11 +36,11 @@ interface IPopUpState {
     sharePointInfo: ISharePointSiteInfo | null;
 }
 
-export function PopUp(props: IPopUpProps) {
+export function Index(props: IPopUpProps) {
     const [stylesUrl, setStylesUrl] = useState("");
     const [loading, setLoading] = useState(true);
     const [isSp, setIsSp] = useState(false);
-
+    const loc = useLocation();
     useSignalEffect(() => {
         if (
             spoRuntime.value.formDigestValue &&

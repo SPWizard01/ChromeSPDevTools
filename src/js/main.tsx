@@ -1,5 +1,4 @@
 import { render } from "preact";
-import { PopUp } from "./popUp";
 import { spCheckerFetch } from "./spChecker";
 import { spoRuntime } from "./runtimeStore";
 import "./assetImports";

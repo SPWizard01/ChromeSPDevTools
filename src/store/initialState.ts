@@ -1,7 +1,7 @@
 import { MessageBarType } from "@fluentui/react";
-import type { IInitialState } from "../interfaces/spCustomActionsInterfaces";
-import { constants } from "./../constants/constants";
-import { CustomActionLocation } from "./../constants/constants";
+import type { IInitialState } from "../actions/spCustomActions/interfaces/spCustomActionsInterfaces";
+import { constants } from "../actions/spCustomActions/constants/constants";
+import { CustomActionLocation } from "../actions/spCustomActions/constants/constants";
 
 export const initialState: IInitialState = {
     customActionType: CustomActionLocation.Web,

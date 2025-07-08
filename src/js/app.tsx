@@ -7,21 +7,10 @@ import {
     useRoute,
     useLocation,
 } from "preact-iso";
-function Dd() {
-    const rt = useRoute();
-    const loc = useLocation();
-    return (
-        <div
-            onClick={() => {
-                loc.route("/test");
-            }}
-        >
-            Loading...
-        </div>
-    );
-}
+import { Index } from "./Index";
+import { SPCustomActions } from "../actions/spCustomActions";
 
-function Dd2() {
+function NotFound() {
     const rt = useRoute();
     const loc = useLocation();
     return (
@@ -30,24 +19,23 @@ function Dd2() {
                 loc.route("/");
             }}
         >
-            Test2...
+            Path not found: {rt.path}
         </div>
     );
 }
+
 export function App() {
     return (
         <LocationProvider>
             <ErrorBoundary>
-                <Router
-                    onRouteChange={(url) =>
-                        console.log("Route changed to", url)
-                    }
-                    onLoadStart={(url) => console.log("Starting to load", url)}
-                    onLoadEnd={(url) => console.log("Finished loading", url)}
-                >
+                <Router>
                     {[
-                        <Route default component={Dd} />,
-                        <Route path="/test" component={Dd2} />,
+                        <Route path="/index.html" component={Index} />,
+                        <Route
+                            path="/userCustomActions/*"
+                            component={SPCustomActions}
+                        />,
+                        <Route default component={NotFound} />,
                     ]}
                 </Router>
             </ErrorBoundary>

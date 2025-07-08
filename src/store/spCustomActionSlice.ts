@@ -1,9 +1,9 @@
 import { createSlice, type ActionCreatorWithPayload, type PayloadAction } from "@reduxjs/toolkit";
 import { initialState } from "./initialState";
-import type { ICustomAction } from "../interfaces/spCustomActionsInterfaces";
+import type { ICustomAction } from "../actions/spCustomActions/interfaces/spCustomActionsInterfaces";
 import { MessageBarType } from "@fluentui/react";
-import { constants, type CustomActionLocationType } from "../constants/constants";
-import type { IMessageData } from "../../common/interfaces";
+import { constants, type CustomActionLocationType } from "../actions/spCustomActions/constants/constants";
+import type { IMessageData } from "../actions/common/interfaces";
 
 export const spCustomActionSlice = createSlice({
     name: "spCustomActions",
